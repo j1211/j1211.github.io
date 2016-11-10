@@ -5,32 +5,32 @@ function getTextFile (filename) {
 	with(ajax) {
 		onload = function() { readyState == 4 && status == 200 && (text = responseText); }
 		open('GET', filename, false);
-		overrideMimeType('text/plain; charset=sjis');
+		overrideMimeType('text/plain; charset=utf8');
 		send(null);
 	}
 	return text;
 }
 
-//ƒAƒbƒvƒ[ƒh
+//ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰
 var upload = document.getElementById('upload');
 
 upload.addEventListener('click', function() {
 	var uploadFile = document.getElementById('upload-file');
 	var file = uploadFile.files[0];
-	if (!file) { alert('ƒtƒ@ƒCƒ‹‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢'); return; }
+	if (!file) { alert('ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é¸æŠã—ã¦ãã ã•ã„'); return; }
 	
-	var result = document.getElementById('result');		//id=result‚Ì—v‘f‚ğQÆ“n‚µ, (result.innerHTML = •¶Í; ‚ÅƒeƒLƒXƒgƒGƒŠƒA‚É•¶Í‚ğ‘}“ü)
+	var result = document.getElementById('result');		//id=resultã®è¦ç´ ã‚’å‚ç…§æ¸¡ã—, (result.innerHTML = æ–‡ç« ; ã§ãƒ†ã‚­ã‚¹ãƒˆã‚¨ãƒªã‚¢ã«æ–‡ç« ã‚’æŒ¿å…¥)
 	var reader = new FileReader();
 	
-	reader.readAsText(file, 'sjis');
+	reader.readAsText(file, 'utf8');
 	reader.onload = function() {
 		
-		//ƒtƒ@ƒCƒ‹file‚ğ“Ç‚İI‚¦‚½‚Æ‚«‚ÉÀs‚³‚ê‚é
-		if (getTextFile('Output_134097/out1.txt') == reader.result) {	//À‚Í‚±‚±(‰ğ“šƒtƒ@ƒCƒ‹‚ÌêŠ)ˆÈŠO, •Ï‚¦‚é•K—v‚ª‚È‚¢‚ñ‚¾‚æ‚Ëc
-			result.innerHTML = 'AcceptediEÍE)';
+		//ãƒ•ã‚¡ã‚¤ãƒ«fileã‚’èª­ã¿çµ‚ãˆãŸã¨ãã«å®Ÿè¡Œã•ã‚Œã‚‹
+		if (getTextFile('Output_134097/out1.txt') == reader.result) {	//å®Ÿã¯ã“ã“(è§£ç­”ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´æ‰€)ä»¥å¤–, å¤‰ãˆã‚‹å¿…è¦ãŒãªã„ã‚“ã ã‚ˆã­â€¦
+			result.innerHTML = 'Acceptedï¼ˆãƒ»âˆ€ãƒ»)';
 		}
 		else {
-			result.innerHTML = "Wrong Answer('E__E')";
+			result.innerHTML = "Wrong Answer('ãƒ»__ãƒ»')";
 		}
 	}
 	
